@@ -1,0 +1,155 @@
+/* Mobile-first clean dark style with parallax layers */
+:root{
+  --bg:#0f1116;
+  --card:#0f1720;
+  --muted:#9aa3b2;
+  --accent:#caa94a;
+  --glass: rgba(255,255,255,0.04);
+  --radius:14px;
+  --maxWidth:520px;
+}
+
+/* Reset base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background:var(--bg);
+  color:#e7eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Parallax container (absolute layers) */
+#parallax{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+/* Background vitral layer */
+.layer{position:absolute;inset:0;background-position:center center;background-size:cover;transform:translateZ(0);}
+.layer--bg{
+  background-image: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=60');
+  opacity:0.20; /* 20% como pediu */
+  filter: contrast(1.05) saturate(0.6) brightness(0.5);
+  mix-blend-mode:multiply;
+}
+
+/* Overlay metal/runes pattern (semi-transparent) */
+.layer--overlay{
+  background-image:
+    linear-gradient(180deg, rgba(6,10,14,0.55), rgba(6,8,12,0.55)),
+    url('https://images.unsplash.com/photo-1505030850283-5a9e81d6d1a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=60');
+  background-blend-mode:overlay;
+  opacity:0.6;
+  mix-blend-mode:overlay;
+  transform-origin:center top;
+  filter:grayscale(0.15) contrast(1.05);
+}
+
+/* App wrapper */
+.app{
+  position:relative;
+  z-index:2;
+  max-width:var(--maxWidth);
+  margin:12px auto;
+  padding:14px;
+}
+
+/* Header */
+.header{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:10px}
+.title{font-size:20px;margin:0;color:var(--accent);letter-spacing:0.6px}
+.subtitle{font-size:12px;color:var(--muted)}
+
+/* Card base */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));
+  border-radius: var(--radius);
+  padding:12px;
+  margin-bottom:12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+}
+
+/* compact smaller */
+.card--compact{padding:10px}
+
+/* Titles inside cards */
+.cardTitle{margin:0 0 8px 0;font-size:14px;color:var(--accent)}
+
+/* Fields */
+.field{display:block;margin-bottom:10px}
+.field .label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.field input[type="text"]{
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.03);
+  background:var(--glass);
+  color:inherit;
+  font-size:15px;
+  outline:none;
+}
+
+/* Row */
+.row{display:flex;gap:12px}
+.row--space{justify-content:space-between;align-items:center}
+.big{font-weight:600;font-size:18px;color:var(--accent)}
+
+/* Level box */
+.levelBox{margin-top:10px}
+.levelValue{font-size:18px;font-weight:600}
+.progressWrap{height:8px;background:rgba(255,255,255,0.03);border-radius:8px;margin:8px 0;overflow:hidden}
+.progressBar{height:100%;width:0;background:linear-gradient(90deg,#d9b64a,#f1d68b);transition:width .35s ease}
+
+/* small text */
+.small{font-size:12px}
+.muted{color:var(--muted)}
+
+/* Resources */
+.resource{margin-bottom:12px}
+.resHead{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px}
+.bar{height:10px;background:rgba(255,255,255,0.03);border-radius:10px;overflow:hidden}
+.barFill{height:100%;width:0;transition:width .28s linear}
+.barFill.hp{background:linear-gradient(90deg,#b84b4b,#f05b5b)}
+.barFill.mp{background:linear-gradient(90deg,#3b82c4,#57b0ff)}
+.barFill.st{background:linear-gradient(90deg,#2fb16f,#7bed9f)}
+.barFill.es{background:linear-gradient(90deg,#8b5fbf,#b88df2)}
+
+/* controls */
+.controls{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:9px;color:inherit;font-weight:600;cursor:pointer}
+.btn.tiny{padding:6px 8px;font-size:13px;border-radius:8px}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,0.45)}
+
+/* Grid for attributes/domains */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.statCard{background:rgba(255,255,255,0.02);padding:8px;border-radius:10px;display:flex;flex-direction:column;gap:6px}
+.statRow{display:flex;justify-content:space-between;align-items:center}
+.statValue{font-weight:600;color:var(--accent)}
+.statDesc{font-size:12px;color:var(--muted)}
+
+/* Notepad */
+.card--notepad textarea{
+  width:100%;
+  min-height:110px;
+  padding:10px;border-radius:10px;background:rgba(255,255,255,0.02);
+  color:inherit;border:1px solid rgba(255,255,255,0.03);resize:vertical;font-size:14px;
+}
+
+/* Footer */
+.footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:6px}
+.footer .small{font-size:12px}
+
+/* Reset button styling */
+#resetBtn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px}
+
+/* Responsive tweaks */
+@media(min-width:700px){
+  .app{margin:24px auto;padding:20px}
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
