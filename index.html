@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Status RPG — Clean Mobile</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <!-- Parallax background layers -->
+    <div id="parallax">
+      <div class="layer layer--bg" data-speed="0.2"></div>
+      <div class="layer layer--overlay" data-speed="0.6"></div>
+    </div>
+
+    <header class="header">
+      <h1 class="title">Status RPG</h1>
+      <small class="subtitle">painel mobile • dark • clean</small>
+    </header>
+
+    <section class="card card--compact">
+      <label class="field">
+        <span class="label">Nome</span>
+        <input id="charName" type="text" placeholder="Seu nome..." />
+      </label>
+
+      <div class="row row--space">
+        <div>
+          <div class="label">Pontos totais</div>
+          <div class="big">100</div>
+        </div>
+        <div>
+          <div class="label">Pontos disponíveis</div>
+          <div class="big" id="availablePoints">100</div>
+        </div>
+      </div>
+
+      <div class="levelBox">
+        <div class="label">Nível (calculado)</div>
+        <div class="levelValue" id="levelDisplay">1</div>
+        <div class="progressWrap">
+          <div id="levelBar" class="progressBar"></div>
+        </div>
+        <div class="small muted" id="levelInfo">Gasto: 0 / 82 pts para lvl max</div>
+      </div>
+    </section>
+
+    <section class="card" id="resourcesCard">
+      <h2 class="cardTitle">Recursos</h2>
+
+      <div class="resource">
+        <div class="resHead"><span>HP</span><span id="hpText">20 / 20</span></div>
+        <div class="bar"><div id="hpBar" class="barFill hp"></div></div>
+        <div class="controls">
+          <button class="btn tiny" data-action="hp" data-value="-1">-1</button>
+          <button class="btn tiny" data-action="hp" data-value="-5">-5</button>
+          <button class="btn tiny" data-action="hp" data-value="1">+1</button>
+          <button class="btn tiny" data-action="hp" data-value="5">+5</button>
+          <button class="btn tiny" data-action="hp" data-value="max">MAX</button>
+        </div>
+      </div>
+
+      <div class="resource">
+        <div class="resHead"><span>MP</span><span id="mpText">15 / 15</span></div>
+        <div class="bar"><div id="mpBar" class="barFill mp"></div></div>
+        <div class="controls">
+          <button class="btn tiny" data-action="mp" data-value="-1">-1</button>
+          <button class="btn tiny" data-action="mp" data-value="-5">-5</button>
+          <button class="btn tiny" data-action="mp" data-value="1">+1</button>
+          <button class="btn tiny" data-action="mp" data-value="5">+5</button>
+          <button class="btn tiny" data-action="mp" data-value="max">MAX</button>
+        </div>
+      </div>
+
+      <div class="resource">
+        <div class="resHead"><span>Estamina</span><span id="stText">15 / 15</span></div>
+        <div class="bar"><div id="stBar" class="barFill st"></div></div>
+        <div class="controls">
+          <button class="btn tiny" data-action="st" data-value="-1">-1</button>
+          <button class="btn tiny" data-action="st" data-value="-5">-5</button>
+          <button class="btn tiny" data-action="st" data-value="1">+1</button>
+          <button class="btn tiny" data-action="st" data-value="5">+5</button>
+          <button class="btn tiny" data-action="st" data-value="max">MAX</button>
+        </div>
+      </div>
+
+      <div class="resource">
+        <div class="resHead"><span>Estresse</span><span id="esText">0 / 30</span></div>
+        <div class="bar"><div id="esBar" class="barFill es"></div></div>
+        <div class="controls">
+          <button class="btn tiny" data-action="es" data-value="-1">-1</button>
+          <button class="btn tiny" data-action="es" data-value="-5">-5</button>
+          <button class="btn tiny" data-action="es" data-value="1">+1</button>
+          <button class="btn tiny" data-action="es" data-value="5">+5</button>
+          <button class="btn tiny" data-action="es" data-value="reset">ZERAR</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="attribsCard">
+      <h2 class="cardTitle">Atributos</h2>
+      <div class="grid" id="attributesGrid"></div>
+    </section>
+
+    <section class="card" id="domainsCard">
+      <h2 class="cardTitle">Domínios</h2>
+      <div class="grid" id="domainsGrid"></div>
+    </section>
+
+    <section class="card card--notepad">
+      <h2 class="cardTitle">Notepad</h2>
+      <textarea id="notepad" placeholder="Anotações..."></textarea>
+      <div class="muted small">Salvamento automático</div>
+    </section>
+
+    <footer class="footer">
+      <button id="resetBtn" class="btn">Resetar</button>
+      <div class="muted small">Auto-save • Local only</div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
